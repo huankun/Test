@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function () {
+            var index = 0;
+            $(".picname_ul>li").mouseenter(function () {
+                //获取当前选项卡索引
+                index = $(this).index();
+                //清空其他选项卡样式
+                $(this).siblings().removeClass("wordbg");
+                //显示选项卡样式
+                $(this).addClass("wordbg");
+                //根据索引找图片
+                var $li = $(".pic_ul>li").eq(index);
+                //清空其他选项卡的图片
+                $li.siblings().removeClass("show");
+                //显示图片
+                $li.addClass("show");
+            })
+            $(".left").click(function () {
+                if(index == 0){
+                    index = 5;
+                }else{
+                    index -= 1;
+                }
+                //根据索引找选项卡
+                var $li = $(".pic_ul>li").eq(index);
+                //清空其他选项卡的图片
+                $li.siblings().removeClass("show");
+                //显示图片
+                $li.addClass("show");
+                //根据索引找图片
+                var $tli = $(".picname_ul>li").eq(index);
+                //清空其他选项卡的样式
+                $tli.siblings().removeClass("wordbg");
+                //显示选项卡样式
+                $tli.addClass("wordbg");
+            })
+            $(".right").click(function () {
+                if(index == 5){
+                    index = 0;
+                }else{
+                    index += 1;
+                }
+                //根据索引找图片
+                var $li = $(".pic_ul>li").eq(index);
+                //清空其他选项卡的图片
+                $li.siblings().removeClass("show");
+                //显示图片
+                $li.addClass("show");
+                //根据索引找图片
+                var $tli = $(".picname_ul>li").eq(index);
+                //清空其他选项卡的样式
+                $tli.siblings().removeClass("wordbg");
+                //显示选项卡样式
+                $tli.addClass("wordbg");
+            })
+        })
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .main {
+            width: 618px;
+            height: 400px;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .pic {
+            width: 618px;
+            height: 400px;
+        }
+
+        .pic_ul>li {
+            display: none;
+        }
+
+        .pic_ul>li>img {
+            width: 618px;
+            height: 400px;
+        }
+
+        .pic_ul .show {
+            display: block;
+        }
+
+        .picname_ul {
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* 底部文字 */
+        .picname_ul>li {
+            width: 80px;
+            float: left;
+            padding: 10px;
+            opacity: 0.8;
+            border: 1px solid white;
+            margin-right: 1px;
+        }
+        .picname_ul .wordbg{
+            background-color: gray;
+        }
+        /* 箭头 */
+        .left{
+            position: absolute;
+            top: 150px;
+            left: 0;
+        }
+        .left>img{
+            width: 100px;
+            height: 100px;
+        }
+        .right{
+            position: absolute;
+            top: 150px;
+            right: 0;
+        }
+        .right>img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="pic">
+            <ul class="pic_ul">
+                <li class="show"><img src="../images/1.jpg"></li>
+                <li><img src="../images/2.jpg"></li>
+                <li><img src="../images/3.jpg"></li>
+                <li><img src="../images/4.jpg"></li>
+                <li><img src="../images/5.jpg"></li>
+                <li><img src="../images/6.jpg"></li>
+            </ul>
+        </div>
+        <div class="picname">
+            <ul class="picname_ul">
+                <li class="wordbg">位置插件</li>
+                <li>瀑布流</li>
+                <li>幻灯片</li>
+                <li>日期时份秒</li>
+                <li>裁剪图片</li>
+                <li>星级插件</li>
+            </ul>
+        </div>
+        <div class="left">
+            <img src="../images/left.png">
+        </div>
+        <div class="right">
+            <img src="../images/right.png">
+        </div>
+    </div>
+</body>
+
+</html>
